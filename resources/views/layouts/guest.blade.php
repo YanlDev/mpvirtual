@@ -20,9 +20,9 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" x-data="{ navbarOpen: false }" :class="{ 'overflow-hidden': navbarOpen }">
 
-    @livewire('layouts.public.navbar')
+    @include('layouts..partials.public.navbar')
 
     @livewireScripts
 </body>
