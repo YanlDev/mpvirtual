@@ -22,6 +22,7 @@
 
 <body class="font-sans antialiased">
 
+    @livewire('layouts.public.navbar')
 
     @livewireScripts
 </body>
