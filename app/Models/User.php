@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role' //Agregando el campo role
     ];
 
     /**
@@ -64,4 +65,70 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // 🚀 NUEVOS MÉTODOS PARA ROLES
+
+    /**
+     * Verifica si el usuario es un administrador.
+     */
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Verifica si el usuario es un empleado.
+     */
+    public function isEmployee(): bool
+    {
+        return $this->role === 'employee';
+    }
+
+    /**
+     * Verifica si el usuario es un usuario regular.
+     */
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
+    /**
+     * Verificar si tiene permisos de administración
+     */
+    public function hasAdminAccess(): bool
+    {
+        return in_array($this->role, ['admin', 'employee']);
+    }
+
+    /**
+     * Obtener todos los roles disponibles
+     */
+    public static function getRoles(): array
+    {
+        return [
+            'user' => 'Usuario',
+            'employee' => 'Empleado',
+            'admin' => 'Administrador',
+        ];
+    }
+
+     // 🔗 RELACIONES EXISTENTES
+
+    /**
+     * Documentos creados por el usuario
+     */
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    /**
+     * Seguimientos de documentos realizados por el usuario
+     */
+    public function documentTrackings()
+    {
+        return $this->hasMany(DocumentTracking::class);
+    }
+
 }
