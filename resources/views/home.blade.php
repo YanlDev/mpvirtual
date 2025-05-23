@@ -16,16 +16,15 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Styles -->
     @livewireStyles
 </head>
 
 <body class="font-sans antialiased" x-data="{ navbarOpen: false }" :class="{ 'overflow-hidden': navbarOpen }">
 
-        @include('layouts.partials.public.navbar')
+    @include('layouts.partials.public.navbar')
 
+    @include('layouts.partials.public.footer')
 
-        @include('layouts.partials.public.footer')
 
     @livewireScripts
 </body>
