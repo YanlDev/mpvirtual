@@ -63,23 +63,4 @@
         </div>
 </nav>
 
-<!-- JavaScript para el menú mobile -->
-{{-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
 
-        if (mobileMenuToggle && mobileMenu) {
-            mobileMenuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Cerrar menú al hacer click fuera
-            document.addEventListener('click', function(event) {
-                if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        }
-    });
-</script> --}}
