@@ -20,7 +20,20 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" x-data="{ 
+    sidebarOpen: false 
+}">
+
+
+    @include('layouts.partials.navbar')
+    @include('layouts.partials.sidebar')
+
+
+    <main class="lg:ml-72 pt-[73px] min-h-screen">
+        <div class="p-6">
+            
+        </div>
+    </main>
 
 
     @livewireScripts

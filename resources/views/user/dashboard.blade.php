@@ -1,5 +1,3 @@
-<div>
-    <h1>
-        Hola desde dashboard del usuario
-    </h1>
-</div>
+<x-user-layout>
+    
+</x-user-layout>
