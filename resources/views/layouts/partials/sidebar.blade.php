@@ -1,3 +1,34 @@
+@php
+    $links = [
+        [
+            'name' => 'Dashboard',
+            'icon' => 'fas fa-home',
+            'route' => route('user.dashboard'),
+            // 'active' => request()->routeIs('dashboard'),
+        ],
+        [
+            'name' => 'Crear Documento',
+            'icon' => 'fas fa-plus-circle',
+            'route' => '#',
+            // 'active' => request()->routeIs('documents.create'),
+        ],
+        [
+            'name' => 'Mis Documentos',
+            'icon' => 'fas fa-folder',
+            'route' => '#',
+            // 'active' => request()->routeIs('documents.*'),
+        ],
+        [
+            'name' => 'Seguimiento',
+            'icon' => 'fas fa-search',
+            'route' => '#',
+            // 'active' => request()->routeIs('tracking.*'),
+        ],
+    ];
+@endphp
+
+
+
 <!-- 📱 OVERLAY PARA MOBILE (cuando sidebar está abierto) -->
 <div x-show="sidebarOpen" x-transition:enter="transition-opacity ease-linear duration-300"
     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
@@ -8,9 +39,7 @@
 
 <!-- 🎯 SIDEBAR RESPONSIVO -->
 <aside
-    class="fixed top-[73px] left-0 z-40 w-72 h-[calc(100vh-73px)] bg-white shadow-xl lg:shadow-none flex flex-col border-r border-gray-200
-              lg:translate-x-0
-              transform transition-transform duration-300 ease-in-out"
+    class="fixed top-[73px] left-0 z-40 w-72 h-[calc(100vh-73px)] bg-white shadow-xl lg:shadow-none flex flex-col border-r border-gray-200 lg:translate-x-0 transform transition-transform duration-300 ease-in-out"
     :class="{
         'translate-x-0': sidebarOpen,
         '-translate-x-full': !sidebarOpen
@@ -19,12 +48,16 @@
     <!-- NAVEGACIÓN PRINCIPAL -->
     <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
 
-        <!-- Dashboard -->
-        <a href="#" @click="if (window.innerWidth < 1024) sidebarOpen = false"
-            class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 bg-zinc-100 text-zinc-800 font-semibold border-r-2 border-zinc-800 transition-colors duration-200 group">
-            <i class="fas fa-home text-lg text-zinc-800 mr-3"></i>
-            <span>Dashboard</span>
-        </a>
+        @foreach ($links as $link)
+            <a href="{{$link['route']}}" @click="if (window.innerWidth < 1024) sidebarOpen = false"
+                class="flex items-center px-4 py-3  rounded-lg hover:bg-gray-100 bg-zinc-100 text-zinc-800 font-semibold border-r-2 border-zinc-800 transition-colors duration-200 group">
+                <i class="{{$link['icon']}} text-lg text-zinc-800 mr-3"></i>
+            <span>{{$link['name']}}</span>
+            </a>
+
+        @endforeach
+
+        {{-- <!-- Dashboard -->
 
         <!-- Mis Documentos -->
         <a href="#" @click="if (window.innerWidth < 1024) sidebarOpen = false"
@@ -52,10 +85,10 @@
             <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Documentos Recientes
             </p>
-        </div>
+        </div> --}}
 
         <!-- Lista de documentos recientes -->
-        <div class="space-y-1">
+        {{-- <div class="space-y-1">
             <!-- Documento reciente 1 -->
             <a href="#" @click="if (window.innerWidth < 1024) sidebarOpen = false"
                 class="flex items-center px-4 py-2 text-sm text-gray-600 rounded-lg hover:bg-gray-50 transition-colors duration-200">
@@ -94,16 +127,16 @@
                 </div>
                 <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
             </a>
-        </div>
+        </div> --}}
 
     </nav>
 
     <!-- CONFIGURACIÓN AL FINAL -->
-    <div class="px-4 py-4 border-t border-gray-200">
-        <a href="#" @click="if (window.innerWidth < 1024) sidebarOpen = false"
+    {{-- <div class="px-4 py-4 border-t border-gray-200">
+        <a href="{{route('profile.show')}}" @click="if (window.innerWidth < 1024) sidebarOpen = false"
             class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
             <i class="fas fa-cog text-lg text-gray-400 group-hover:text-gray-600 mr-3"></i>
             <span>Configuración</span>
         </a>
-    </div>
+    </div> --}}
 </aside>
