@@ -31,7 +31,7 @@
 
     <main class="lg:ml-72 pt-[73px] min-h-screen">
         <div class="p-6">
-            
+            {{ $slot }}
         </div>
     </main>
 

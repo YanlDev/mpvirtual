@@ -4,13 +4,13 @@
             'name' => 'Dashboard',
             'icon' => 'fas fa-home',
             'route' => route('user.dashboard'),
-            // 'active' => request()->routeIs('dashboard'),
+            'active' => request()->routeIs('user.dashboard'),
         ],
         [
             'name' => 'Crear Documento',
             'icon' => 'fas fa-plus-circle',
-            'route' => '#',
-            // 'active' => request()->routeIs('documents.create'),
+            'route' => route('user.documents.create'),
+            'active' => request()->routeIs('user.documents.create'),
         ],
         [
             'name' => 'Mis Documentos',
@@ -50,38 +50,15 @@
 
         @foreach ($links as $link)
             <a href="{{$link['route']}}" @click="if (window.innerWidth < 1024) sidebarOpen = false"
-                class="flex items-center px-4 py-3  rounded-lg hover:bg-gray-100 bg-zinc-100 text-zinc-800 font-semibold border-r-2 border-zinc-800 transition-colors duration-200 group">
+                class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-200 text-zinc-800 {{ ($link['active'] ?? false) ? 'bg-zinc-100  font-semibold border-r-2 border-zinc-800 transition-colors duration-200' : '' }} transition-colors duration-200">
                 <i class="{{$link['icon']}} text-lg text-zinc-800 mr-3"></i>
             <span>{{$link['name']}}</span>
             </a>
 
         @endforeach
 
-        {{-- <!-- Dashboard -->
-
-        <!-- Mis Documentos -->
-        <a href="#" @click="if (window.innerWidth < 1024) sidebarOpen = false"
-            class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
-            <i class="fas fa-folder text-lg text-gray-400 group-hover:text-gray-600 mr-3"></i>
-            <span>Mis Documentos</span>
-        </a>
-
-        <!-- Crear Documento -->
-        <a href="#" @click="if (window.innerWidth < 1024) sidebarOpen = false"
-            class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
-            <i class="fas fa-plus-circle text-lg text-gray-400 group-hover:text-gray-600 mr-3"></i>
-            <span>Crear Documento</span>
-        </a>
-
-        <!-- Seguimiento -->
-        <a href="#" @click="if (window.innerWidth < 1024) sidebarOpen = false"
-            class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
-            <i class="fas fa-search text-lg text-gray-400 group-hover:text-gray-600 mr-3"></i>
-            <span>Seguimiento</span>
-        </a>
-
         <!-- Separador -->
-        <div class="pt-4 pb-2">
+        {{-- <div class="pt-4 pb-2">
             <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Documentos Recientes
             </p>

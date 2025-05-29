@@ -24,13 +24,11 @@ class DashboardController extends Controller
 
         switch ($user->role) {
             case 'admin':
-                return $this->adminDashboard();
-                break;
+                return redirect()->route('admin.dashboard'); // Redirige al dashboard del administrador
             case 'employee':
-                return $this->employeeDashboard();
-                break;
+                return $this->employeeDashboard(); // Llama al método para el dashboard del empleado
             case 'user':
-                return $this->userDashboard();
+                return redirect()->route('user.dashboard'); // Redirige al dashboard del usuario
                 break;
             default:
                 Auth::logout(); // Si el rol no es válido, cierra la sesión
@@ -39,18 +37,18 @@ class DashboardController extends Controller
         }
     }
 
-    protected function adminDashboard(){
-        // Lógica específica para el dashboard del administrador
-        return view('admin.dashboard'); // Redirige a la vista del dashboard del administrador
-    }
+    // protected function adminDashboard(){
+    //     // Lógica específica para el dashboard del administrador
+    //     return view('admin.dashboard'); // Redirige a la vista del dashboard del administrador
+    // }
 
     protected function employeeDashboard(){
         // Lógica específica para el dashboard del empleado
         return view('employee.dashboard'); // Redirige a la vista del dashboard del empleado
     }
-    protected function userDashboard(){
-        // Lógica específica para el dashboard del usuario
-        return view('user.dashboard'); // Redirige a la vista del dashboard del usuario
-    }
+    // protected function userDashboard(){
+    //     // Lógica específica para el dashboard del usuario
+    //     return view('user.dashboard'); // Redirige a la vista del dashboard del usuario
+    // }
 
 }
