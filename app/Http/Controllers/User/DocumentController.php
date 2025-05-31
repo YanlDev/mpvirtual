@@ -39,6 +39,9 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         dd($request->all());
+        
+        // Aquí se guardaría el documento y sus archivos asociados
+
     }
 
     /**
