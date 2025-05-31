@@ -84,7 +84,7 @@
                                 <p class="text-xs sm:text-sm text-gray-600">
                                     Seleccione uno o más archivos (PDF, DOC, DOCX)
                                     <br>
-                                    Tamaño máximo por archivo: 10MB
+                                    Tamaño máximo por archivo: 2MB
                                 </p>
                             </div>
                         </div>
@@ -131,7 +131,6 @@
 
     {{-- JavaScript para mostrar archivos seleccionados --}}
     <script>
-        // 🎯 VERSIÓN CORREGIDA - Simple y funcional
         const fileInput = document.getElementById('files');
         const fileList = document.getElementById('file-list');
         const selectedFilesContainer = document.getElementById('selected-files'); // ← Contenedor correcto
@@ -208,7 +207,6 @@
             showFiles();
         }
 
-        // ← NUEVA FUNCIÓN: Actualizar el input file
         function updateFileInput() {
             const dt = new DataTransfer();
             selectedFiles.forEach(file => {
