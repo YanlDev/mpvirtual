@@ -7,6 +7,6 @@ Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->name('dashboard');
 
-Route::resource('/documents', DocumentController::class)
+Route::resource('/documents', DocumentController::class);
 
 ?>
